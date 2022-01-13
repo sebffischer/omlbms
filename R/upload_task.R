@@ -17,11 +17,11 @@ upload_task = function(name) {
     url = sprintf("%s/task", mlr3oml:::get_server()),
     body = list(
       description = httr::upload_file(desc_path)
-
     ),
     query = list(api_key = mlr3oml:::get_api_key())
   )
   response = xml2::as_list(httr::content(response))
+  save_task_id(response)
   return(response)
 }
 
