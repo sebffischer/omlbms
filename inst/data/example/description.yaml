@@ -1,0 +1,6 @@
+name: "abalone"
+ignore_attribute: # Which columns are not to used as features
+  - "ignore1"
+  - "ignore2" 
+default_target_attribute: "V9"
+license: "CC BY 4.0" # The data license
