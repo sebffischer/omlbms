@@ -13,7 +13,9 @@ upload_dataset = function(name) {
   xml2::xml_add_child(.x = dat, .value = "oml:name", desc$name)
   xml2::xml_add_child(.x = dat, .value = "oml:description", data_desc)
   xml2::xml_add_child(.x = dat, .value = "oml:format", "arff")
-  xml2::xml_add_child(.x = dat, .value = "oml:licence", desc$license)
+  if (!is.null(desc$license)) {
+    xml2::xml_add_child(.x = dat, .value = "oml:licence", desc$license)
+  }
   if (!is.null(desc$default_target_attribute)) {
     xml2::xml_add_child(.x = dat, .value = "oml:default_target_attribute", desc$default_target_attribute)
   }
@@ -37,9 +39,3 @@ upload_dataset = function(name) {
   response = xml2::as_list(httr::content(response))
   # save_data_id(response)
   return(response)
-}
-
-if (FALSE) {
-  debugonce(upload_dataset)
-  upload_dataset("example")
-}
