@@ -14,7 +14,9 @@ upload_dataset = function(name) {
   xml2::xml_add_child(.x = dat, .value = "oml:description", data_desc)
   xml2::xml_add_child(.x = dat, .value = "oml:format", "arff")
   xml2::xml_add_child(.x = dat, .value = "oml:licence", desc$license)
-  xml2::xml_add_child(.x = dat, .value = "oml:default_target_attribute", desc$default_target_attribute)
+  if (!is.null(desc$default_target_attribute)) {
+    xml2::xml_add_child(.x = dat, .value = "oml:default_target_attribute", desc$default_target_attribute)
+  }
   # xml2::xml_add_child(.x = dat, .value = "oml:citation", desc$citation)
   # xml2::xml_add_child(.x = dat, .value = "oml:original_data_url", desc$citation)
   # xml2::xml_add_child(.x = dat, .value = "oml:paper_url", desc$citation)
