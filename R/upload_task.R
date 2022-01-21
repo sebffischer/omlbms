@@ -1,10 +1,11 @@
+#' @export
 upload_task = function(name) {
   path = sprintf("%s/%s", get_path("tasks"), name)
   desc = read_description_yaml(path)
   task_type_id = get_task_type_id(desc$task_type)
   doc = xml2::xml_new_document()
   task = xml2::xml_add_child(doc, "oml:task_inputs", "xmlns:oml" = "http://openml.org/openml")
-  xml2::xml_add_child(.x = task, "oml:task_type_id", task_type_id)
+  xml2::xml_add_child(task, "oml:task_type_id", task_type_id)
   xml2::xml_add_child(task, "oml:input", name = "source_data", desc$source_data)
   xml2::xml_add_child(task, "oml:input", name = "target_feature", desc$target_feature)
   xml2::xml_add_child(task, "oml:input", name = "estimation_procedure", desc$estimation_procedure)
@@ -21,7 +22,7 @@ upload_task = function(name) {
     query = list(api_key = mlr3oml:::get_api_key())
   )
   response = xml2::as_list(httr::content(response))
-  save_task_id(response)
+  # save_task_id(response)
   return(response)
 }
 

@@ -15,4 +15,4 @@ Imports:
     mlr3oml
 Suggests: 
     testthat (>= 3.0.0)
-fonfig/tesfthat/edition: 3
+Config/testthat/edition: 3

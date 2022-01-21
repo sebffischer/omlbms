@@ -1,5 +1,5 @@
-task_type: "Supervised Classification"
-source_data: "100"
+task_type: "Supervised Regression"
+source_data: "4377"
 target_feature: "V9"
-estimation_procedure: "1"
+estimation_procedure: "8"
 

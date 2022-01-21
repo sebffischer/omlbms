@@ -12,7 +12,4 @@ dt$ignore2 = 2
 foreign::write.arff(dt, file = sprintf("%s/inst/data/%s/data.arff", get_path(), name))
 
 
-if (FALSE) {
-  upload_dataset(name)
-
-}
+# upload_dataset(name)

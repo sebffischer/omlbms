@@ -1,3 +1,4 @@
+#' @export
 upload_dataset = function(name) {
   path = get_path("data", name)
   data_desc = read_description_md(path)
@@ -23,7 +24,6 @@ upload_dataset = function(name) {
   xml2::write_xml(x = doc, file = desc_path)
 
   data_path = sprintf("%s/data.arff", path)
-  browser()
   response = httr::POST(
     url = sprintf("%s/data", mlr3oml:::get_server()),
     body = list(
@@ -33,7 +33,7 @@ upload_dataset = function(name) {
     query = list(api_key = mlr3oml:::get_api_key())
   )
   response = xml2::as_list(httr::content(response))
-  save_data_id(response)
+  # save_data_id(response)
   return(response)
 }
 
